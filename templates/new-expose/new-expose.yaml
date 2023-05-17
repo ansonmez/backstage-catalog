@@ -60,7 +60,7 @@ spec:
       name: make a pr with the new namespaces
       action: publish:github:pull-request
       input:
-        repoUrl: github.com?repo=project-repo&owner=backstage-skupper-demo
+        repoUrl: github.com?repo=project-repo&owner=ansonmez
         branchName: ${{ parameters.service }}
         title: skupper for ${{ parameters.service }}
         description: skupper for ${{ parameters.service }}

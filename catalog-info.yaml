@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: backstage-catalog
   annotations:
-    github.com/project-slug: backstage-skupper-demo/backstage-catalog
+    github.com/project-slug: ansonmez/backstage-catalog
 spec:
   type: other
   lifecycle: unknown

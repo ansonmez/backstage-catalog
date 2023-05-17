@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: ${{values.deployment.replaceAll('component:default/','').replaceAll(r/-deployment$/g, '')}}-deployment-skupper-expose
   annotations:
-    github.com/project-slug: backstage-skupper-demo/backstage-catalog
+    github.com/project-slug: ansonmez/backstage-catalog
 spec:
   type: skupper-expose
   lifecycle: unknown
