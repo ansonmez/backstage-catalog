@@ -1,0 +1,46 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: new-baremetal-openshift 
+  title: New Baremetal OpenShift Cluster 
+  description: New baremetal OpenShift Cluster 
+  tags:
+    - baremetal
+spec:
+  owner: anil sonmez
+  type: system
+  
+  parameters:
+    - title: Provide information for the Baremetal OpenShift Cluster
+      required:
+        - clustername
+        - availbility zone
+      properties:
+        clustername:
+          title: ClusterName
+          type: string
+          description: ClusterName
+        az:
+          title: availbility zone
+          type: string
+          description: availbility zone
+  steps:
+    - id: template-namespaces 
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        copyWithoutRender: []
+        values:
+          clustername: ${{ parameters.clustername }}
+          az: ${{ parameters.az }}
+
+    - id: pull-request
+      name: make a pr with the new namespaces
+      action: publish:github:pull-request
+      input:
+        repoUrl: github.com?repo=project-repo&owner=ansonmez
+        branchName: ${{ parameters.clustername }}
+        title: openshift for ${{ parameters.clustername }}
+        description: openshift for ${{ parameters.clustername }}
+        
