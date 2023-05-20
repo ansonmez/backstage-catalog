@@ -33,7 +33,7 @@ spec:
         copyWithoutRender: []
         values:
           clustername: ${{ parameters.clustername }}
-          az: ${{ parameters.az }}
+          availbilityzone: ${{ parameters.availbilityzone }}
 
     - id: pull-request
       name: make a pr with the new namespaces
