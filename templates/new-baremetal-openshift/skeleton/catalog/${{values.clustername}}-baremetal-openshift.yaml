@@ -5,6 +5,6 @@ metadata:
   annotations:
     github.com/project-slug: ansonmez/backstage-catalog
 spec:
-  type: baremetal-openshift-cluster
+  type: baremetal-openshift
   lifecycle: unknown
-  owner: Joshua Mathianas
+  owner: Anil Sonmez
