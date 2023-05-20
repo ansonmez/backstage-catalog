@@ -20,10 +20,10 @@ spec:
           title: ClusterName
           type: string
           description: ClusterName
-        az:
-          title: availbility zone
+        availabilityzone:
+          title: availability zone
           type: string
-          description: availbility zone
+          description: availability zone
   steps:
     - id: template-namespaces 
       name: Fetch Skeleton + Template
