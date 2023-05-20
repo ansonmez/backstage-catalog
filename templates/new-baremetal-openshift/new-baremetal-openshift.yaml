@@ -14,7 +14,7 @@ spec:
     - title: Provide information for the Baremetal OpenShift Cluster
       required:
         - clustername
-        - availbilityzone
+        - availabilityzone
       properties:
         clustername:
           title: ClusterName
@@ -33,7 +33,7 @@ spec:
         copyWithoutRender: []
         values:
           clustername: ${{ parameters.clustername }}
-          availbilityzone: ${{ parameters.availbilityzone }}
+          availabilityzone: ${{ parameters.availabilityzone }}
 
     - id: pull-request
       name: make a pr with the new namespaces
