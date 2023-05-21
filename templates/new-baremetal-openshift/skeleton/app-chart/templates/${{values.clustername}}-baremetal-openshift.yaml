@@ -62,4 +62,7 @@ spec:
         secret:
           secretName: ssh-key
           defaultMode: 256
+          items:
+            - key: ssh-privatekey
+              path: id_rsa
       restartPolicy: Never
