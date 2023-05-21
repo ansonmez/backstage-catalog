@@ -9,13 +9,12 @@ data:
       children:
         local:
           hosts:
-            ${{values.host}}
+            localhost
           vars:
             ansible_user: cloud-user
             vm_name: ${{values.clustername}}
             aaphost: aap
             template_id: 13
-            aaptoken: ${{values.aaptoken}}
 ---
 apiVersion: batch/v1
 kind: Job
