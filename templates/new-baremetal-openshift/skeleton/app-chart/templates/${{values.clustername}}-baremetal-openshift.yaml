@@ -12,9 +12,9 @@ data:
             ${{values.host}}
           vars:
             ansible_user: cloud-user
-            vm_name: ${{values.vm_name}}
-            aaphost: ${{values.aaphost}}
-            template_id: ${{values.template_id}}
+            vm_name: ${{values.clustername}}
+            aaphost: aap
+            template_id: 13
             aaptoken: ${{values.aaptoken}}
 ---
 apiVersion: batch/v1
@@ -40,10 +40,6 @@ spec:
             - sh
             - -c
             - ansible-playbook /launch_job_template.yml -i /workspace/source/inventory.yml 
-            - -e vm_name=${{values.vm_name}} 
-            - -e aaphost=${{values.aaphost}}
-            - -e template_id=${{values.template_id}} 
-            - -e aaptoken=${{values.aaptoken}}
           volumeMounts:
             - name: inventory
               mountPath: /workspace/source
