@@ -38,9 +38,7 @@ spec:
           command:
             - sh
             - -c
-            - ansible-playbook /launch_job_template.yml -i /workspace/source/inventory.yml 
-            - -e
-            - aaptoken=$(ANSIBLETOKEN)
+            - ansible-playbook /launch_job_template.yml -i /workspace/source/inventory.yml -e aaptoken=$(ANSIBLETOKEN)
           volumeMounts:
             - name: inventory
               mountPath: /workspace/source
