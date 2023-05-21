@@ -6,15 +6,14 @@ metadata:
 data:
   inventory.yml: |
     all:
-      children:
-        local:
-          hosts:
-            localhost
-          vars:
-            ansible_user: cloud-user
-            vm_name: ${{values.clustername}}
-            aaphost: aap
-            template_id: 13
+      hosts:
+        localhost:
+          ansible_connection: local
+      vars:
+        ansible_user: cloud-user
+        vm_name: ${{values.clustername}}
+        aaphost: aap
+        template_id: 13
 ---
 apiVersion: batch/v1
 kind: Job
