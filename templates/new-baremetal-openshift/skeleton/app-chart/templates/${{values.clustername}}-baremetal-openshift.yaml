@@ -8,8 +8,6 @@ data:
     all:
       children:
         local:
-          hosts:
-            localhost
           vars:
             ansible_user: cloud-user
             vm_name: ${{values.clustername}}
