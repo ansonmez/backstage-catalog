@@ -8,6 +8,8 @@ data:
     all:
       children:
         local:
+          hosts:
+            localhost
           vars:
             ansible_user: cloud-user
             vm_name: ${{values.clustername}}
@@ -36,10 +38,13 @@ spec:
           command:
             - sh
             - -c
-            - ansible-playbook /launch_job_template.yml -i /workspace/source/inventory.yml -e aaptoken=$(ANSIBLETOKEN)
+            - cp /workspace/.ssh/id_rsa /tmp/id_rsa && chmod 0400 /tmp/id_rsa && ansible-playbook /launch_job_template.yml -i /workspace/source/inventory.yml -e aaptoken=$(ANSIBLETOKEN) --private-key=/tmp/id_rsa
           volumeMounts:
             - name: inventory
               mountPath: /workspace/source
+            - name: ssh
+              mountPath: /workspace/.ssh/id_rsa
+              subPath: id_rsa
           env:
             - name: ANSIBLE_HOST_KEY_CHECKING
               value: "False"
@@ -53,4 +58,8 @@ spec:
         configMap:
           name: ${{values.clustername}}-inventory
           defaultMode: 420
+      - name: ssh
+        secret:
+          secretName: ssh-key
+          defaultMode: 256
       restartPolicy: Never
