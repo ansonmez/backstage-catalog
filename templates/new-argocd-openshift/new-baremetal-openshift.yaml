@@ -59,6 +59,6 @@ spec:
       input:
         repoUrl: github.com?repo=project-repo&owner=ansonmez
         branchName: ${{ parameters.clustername }}
-        title: openshift for ${{ parameters.clustername }}
+        title: gitops for ${{ parameters.clustername }} ${{ parameters.githubRepo }}  ${{ parameters.destinationNamespace }} ${{ parameters.appname }}
         description: openshift for ${{ parameters.clustername }}
         

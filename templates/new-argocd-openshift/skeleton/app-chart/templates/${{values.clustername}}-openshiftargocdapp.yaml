@@ -2,19 +2,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ${{ parameters.clustername }}-${{ parameters.appname }}
+  name: ${{ values.clustername }}-${{ values.appname }}
   namespace: janus-argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io  
 spec:
   project: default
   source:
-    repoURL: ${{ parameters.githubRepo }}
+    repoURL: ${{ values.githubRepo }}
     targetRevision: HEAD
-    path: ${{ parameters.path }}
+    path: ${{ values.path }}
   destination:
     server: ${{values.clustername}}
-    namespace: ${{ parameters.destinationNamespace }}
+    namespace: ${{ values.destinationNamespace }}
   syncPolicy:
     automated: 
       prune: true
