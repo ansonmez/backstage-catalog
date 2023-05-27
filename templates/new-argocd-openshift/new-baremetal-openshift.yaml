@@ -5,7 +5,7 @@ metadata:
   title: New OpenShift GitOps Application 
   description: New OpenShift GitOps Application 
   tags:
-    - GitOps
+    - gitops
 spec:
   owner: Anil Son
   type: application
