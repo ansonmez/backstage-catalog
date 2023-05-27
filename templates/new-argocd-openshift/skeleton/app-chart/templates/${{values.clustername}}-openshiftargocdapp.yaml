@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: ${{ values.clustername }}-${{ values.appname }}
-  namespace: janus-argocd
+  namespace: backstage
   finalizers:
     - resources-finalizer.argocd.argoproj.io  
 spec:
