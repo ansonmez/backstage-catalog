@@ -1,0 +1,64 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: new-OpenShiftGitOpsApp 
+  title: New OpenShift GitOps Application 
+  description: New OpenShift GitOps Application 
+  tags:
+    - GitOps
+spec:
+  owner: Anil Son
+  type: application
+  
+  parameters:
+    - title: Provide information for the GitOps Application
+      required:
+        - clustername
+        - githubRepo
+        - path
+        - destinationNamespace
+        - appname
+      properties:
+        clustername:
+          title: OpenShift Cluster Name for the Application
+          type: string
+          description: OpenShift Cluster Name for the Application
+        githubRepo:
+          title: GitHub Repository
+          type: string
+          description: GitHub Repository
+        path:
+          title: Path
+          type: string
+          description: Git Path of application 
+        destinationNamespace:
+          title: Destination Namespace
+          type: string
+          description: Destination Namespace
+        appname:
+          title: Application Name
+          type: string
+          description: Application Name
+  steps:
+    - id: template-namespaces 
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        copyWithoutRender: []
+        values:
+          clustername: ${{ parameters.clustername }}
+          githubRepo: ${{ parameters.githubRepo }}
+          path: ${{ parameters.path }}
+          destinationNamespace: ${{ parameters.destinationNamespace }}
+          appname: ${{ parameters.appname }}
+
+    - id: pull-request
+      name: make a pr with the new namespaces
+      action: publish:github:pull-request
+      input:
+        repoUrl: github.com?repo=project-repo&owner=ansonmez
+        branchName: ${{ parameters.clustername }}
+        title: openshift for ${{ parameters.clustername }}
+        description: openshift for ${{ parameters.clustername }}
+        
