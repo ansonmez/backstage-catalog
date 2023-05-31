@@ -58,7 +58,7 @@ spec:
       action: publish:github:pull-request
       input:
         repoUrl: github.com?repo=project-repo&owner=ansonmez
-        branchName: ${{ parameters.clustername }}
+        branchName: ${{ parameters.appname }}
         title: gitops for ${{ parameters.clustername }} ${{ parameters.githubRepo }}  ${{ parameters.destinationNamespace }} ${{ parameters.appname }}
         description: openshift for ${{ parameters.clustername }}
         
